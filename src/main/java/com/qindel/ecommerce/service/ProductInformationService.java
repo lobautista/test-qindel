@@ -4,5 +4,5 @@ import com.qindel.ecommerce.model.dto.response.ProductResponseDto;
 
 public interface ProductInformationService {
 
-    public ProductResponseDto getProductInformation(String time, String date, Integer id, Long chain);
+	public ProductResponseDto getProductInformation(String date, Integer id, Long chain);
 }

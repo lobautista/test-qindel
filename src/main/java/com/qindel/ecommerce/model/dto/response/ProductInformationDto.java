@@ -1,5 +1,7 @@
 package com.qindel.ecommerce.model.dto.response;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -9,9 +11,9 @@ public class ProductInformationDto{
 
     private Long brandId;
 
-    private String startDate;
+    private Date startDate;
 
-    private String endDate;
+    private Date endDate;
 
     private Integer priceList;
 

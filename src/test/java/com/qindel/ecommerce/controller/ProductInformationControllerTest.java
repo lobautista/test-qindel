@@ -20,19 +20,18 @@ public class ProductInformationControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private static final String api = "http://localhost:%s/productInfo/time/%s/date/%s/productId/%s/chain/%s";
+    private static final String api = "http://localhost:%s/productInfo/date/%s/productId/%s/chain/%s";
 
 
     @Test
     public void getProductInfo1Test(){
 
-        String time = "10:00";
-        String date = "14";
+        String datetime = "2020-06-14 10:00:00";
         Integer productId = 35455;
         Long chain = 1L;
-        String apiTest = String.format(this.api, this.port, time, date, productId, chain);
-        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-14-00.00.00",
-                "2020-11-31-23.59.59", 5, 35455, 40.5);
+        String apiTest = String.format(this.api, this.port, datetime, productId, chain);
+        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-14 00:00:00",
+                "2020-12-31 23:59:59", 1, 35455, 35.5, null);
 
         ResponseEntity<ProductResponseDto> productResponse = this.restTemplate
                 .getForEntity(apiTest, ProductResponseDto.class);
@@ -43,13 +42,12 @@ public class ProductInformationControllerTest {
     @Test
     public void getProductInfo2Test(){
 
-        String time = "16:00";
-        String date = "14";
+        String datetime = "2020-06-14 16:00:00";
         Integer productId = 35455;
         Long chain = 1L;
-        String apiTest = String.format(this.api, this.port, time, date, productId, chain);
-        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-14-15.00.00",
-                "2020-06-14-18.30.00", 2, 35455, 25.45);
+        String apiTest = String.format(this.api, this.port, datetime, productId, chain);
+        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-14 15:00:00",
+                "2020-06-14 18:30:00", 2, 35455, 25.45, null);
 
         ResponseEntity<ProductResponseDto> productResponse = this.restTemplate
                 .getForEntity(apiTest, ProductResponseDto.class);
@@ -60,13 +58,12 @@ public class ProductInformationControllerTest {
     @Test
     public void getProductInfo3Test(){
 
-        String time = "21:00";
-        String date = "14";
+        String datetime = "2020-06-14 21:00:00";
         Integer productId = 35455;
         Long chain = 1L;
-        String apiTest = String.format(this.api, this.port, time, date, productId, chain);
-        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-14-00.00.00",
-                "2020-11-31-23.59.59", 5, 35455, 40.5);
+        String apiTest = String.format(this.api, this.port, datetime, productId, chain);
+        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-14 00:00:00",
+                "2020-12-31 23:59:59", 1, 35455, 35.5, null);
 
         ResponseEntity<ProductResponseDto> productResponse = this.restTemplate
                 .getForEntity(apiTest, ProductResponseDto.class);
@@ -77,13 +74,12 @@ public class ProductInformationControllerTest {
     @Test
     public void getProductInfo4Test(){
 
-        String time = "10:00";
-        String date = "15";
+        String datetime = "2020-06-15 10:00:00";
         Integer productId = 35455;
         Long chain = 1L;
-        String apiTest = String.format(this.api, this.port, time, date, productId, chain);
-        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-15-00.00.00",
-                "2020-06-15-11.00.00", 3, 35455, 30.5);
+        String apiTest = String.format(this.api, this.port, datetime, productId, chain);
+        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-15 00:00:00",
+                "2020-06-15 11:00:00", 3, 35455, 30.5, null);
 
         ResponseEntity<ProductResponseDto> productResponse = this.restTemplate
                 .getForEntity(apiTest, ProductResponseDto.class);
@@ -94,19 +90,17 @@ public class ProductInformationControllerTest {
     @Test
     public void getProductInfo5Test(){
 
-        String time = "21:00";
-        String date = "16";
+        String datetime = "2020-06-16 21:00:00";
         Integer productId = 35455;
         Long chain = 1L;
-        String apiTest = String.format(this.api, this.port, time, date, productId, chain);
-        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-15-00.00.00",
-                "2020-06-15-11.00.00", 3, 35455, 30.5);
+        String apiTest = String.format(this.api, this.port, datetime, productId, chain);
+        ProductResponseDto productResponseDto = new ProductResponseDto(1L, "2020-06-15 16:00:00",
+                "2020-12-31 23:59:59", 4, 35455, 38.95, null);
 
         ResponseEntity<ProductResponseDto> productResponse = this.restTemplate
                 .getForEntity(apiTest, ProductResponseDto.class);
 
-        assertEquals("No information for the given input. Exception message: null", productResponse.getBody().getError());
-        assertEquals(HttpStatus.NOT_FOUND, productResponse.getStatusCode());
+        assertEquals(productResponseDto, productResponse.getBody());
     }
 
 }

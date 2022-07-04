@@ -1,6 +1,6 @@
 package com.qindel.ecommerce.model.entity;
 
-import lombok.Data;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import lombok.Data;
 
 @Entity
 @Table(name = "Prices")
@@ -27,10 +29,10 @@ public class Price {
     private Chain brandId;
 
     @Column(name = "START_DATE")
-    private String startDate;
+    private Timestamp startDate;
 
     @Column(name = "END_DATE")
-    private String endDate;
+    private Timestamp endDate;
 
     @Column(name = "PRICE_LIST")
     private Integer priceList;

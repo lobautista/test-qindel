@@ -1,10 +1,13 @@
 package com.qindel.ecommerce.model.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class ProductResponseDto {
 
@@ -32,14 +35,5 @@ public class ProductResponseDto {
 
     public ProductResponseDto(String error) {
         this.error = error;
-    }
-
-    public ProductResponseDto(Long idCadena, String fechaInicio, String fechaFin, Integer tarifa, Integer idProducto, Double precioFinal) {
-        this.idCadena = idCadena;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.tarifa = tarifa;
-        this.idProducto = idProducto;
-        this.precioFinal = precioFinal;
     }
 }
